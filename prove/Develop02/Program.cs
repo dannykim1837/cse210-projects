@@ -8,9 +8,11 @@ namespace Learning02
     {
         static Journal journal = new Journal();
 
+        // menu loop
         static void Main(string[] args)
         {
             bool keepGoing = true;
+            // 
             Console.Clear();
             while (keepGoing)
             {
@@ -21,6 +23,7 @@ namespace Learning02
                 {
                     WriteEntry();
                 }
+                
                 else if (selection == 2)
                 {
                     DisplayJournal();
@@ -41,6 +44,7 @@ namespace Learning02
             }
         }
 
+        // entry
         static void WriteEntry()
         {
             Console.WriteLine("Random Prompt: " + GetRandomPrompt());
@@ -58,6 +62,7 @@ namespace Learning02
             Console.WriteLine("Entry added successfully!");
         }
 
+        // journal
         static void DisplayJournal()
         {
             Console.WriteLine("Journal Entries:\n");
@@ -67,7 +72,8 @@ namespace Learning02
                 Console.WriteLine($"Date: {entry.Date}, Prompt: {entry.Prompt}, Response: {entry.Response}");
             }
         }
-
+        
+        // save the journal to a file
         static void SaveToFile()
         {
             Console.Write("Enter filename to save: ");
@@ -83,7 +89,8 @@ namespace Learning02
                 Console.WriteLine($"Error saving journal: {ex.Message}");
             }
         }
-
+        
+        // load the journal to a file
         static void LoadFromFile()
         {
             Console.Write("Enter filename to load: ");
@@ -100,12 +107,14 @@ namespace Learning02
                 Console.WriteLine($"Error loading journal: {ex.Message}");
             }
         }
-
+        
+        // menu
         static void ShowMenu()
         {
             Console.WriteLine("Select Option \n 1. Write \n 2. Display \n 3. Save \n 4. Load  \n 5. Quit");
         }
 
+        // random prompt list
         static string GetRandomPrompt()
         {
             List<string> prompts = new List<string>
