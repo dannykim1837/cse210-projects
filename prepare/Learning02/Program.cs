@@ -19,15 +19,13 @@ class Program
         job2._startYear = 2010;
         job2._endYear = 2023;
 
-        Resume myResume = new Resume();
+        var myResume = new Resume();
         myResume._name = "Danny Kim";
 
         myResume._jobs.Add(job1);
         myResume._jobs.Add(job2);
 
         myResume.Display();
-
-
 
     }
 }
