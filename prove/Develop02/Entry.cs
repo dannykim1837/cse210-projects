@@ -1,8 +1,7 @@
-pubilc class Entry {
-    public string response;
-    public string prompt;
-    public string date;
+public class Entry
+    {
+        public string Prompt { get; set; }
+        public string Response { get; set; }
+        public DateTime Date { get; set; }
+    }
 
-    public Entry(string response, string propmt)
-        this.response = response
-}
