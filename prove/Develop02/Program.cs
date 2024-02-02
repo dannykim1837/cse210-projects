@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace Learning02
 {
@@ -17,33 +16,36 @@ namespace Learning02
             while (keepGoing)
             {
                 ShowMenu();
-                int selection = int.Parse(Console.ReadLine());
-
-                if (selection == 1)
+                int selection;
+                if (int.TryParse(Console.ReadLine(), out selection))
                 {
-                    WriteEntry();
+                    if (selection == 1)
+                    {
+                        WriteEntry();
+                    }
+                    else if (selection == 2)
+                    {
+                        DisplayJournal();
+                    }
+                    else if (selection == 3)
+                    {
+                        var lines = journal.Export();
+                        WriteFile(lines);
+                    }
+                    else if (selection == 4)
+                    {
+                        var lines = ReadFile();
+                        journal = new Journal(lines);
+                    }
+                    else if (selection == 5)
+                    {
+                        keepGoing = false;
+                        Console.WriteLine("Goodbye!");
+                    }
                 }
-                
-                else if (selection == 2)
-                {
-                    DisplayJournal();
-                }
-                else if (selection == 3)
-                {
-                    SaveToFile();
-                }
-                else if (selection == 4)
-                {
-                    LoadFromFile();
-                }
-                else if (selection == 5)
-                {
-                    keepGoing = false;
-                    Console.WriteLine("Goodbye!");
-                }
-            }
+            }    
         }
-
+        
         // entry
         static void WriteEntry()
         {
@@ -73,40 +75,20 @@ namespace Learning02
             }
         }
         
-        // save the journal to a file
-        static void SaveToFile()
+        static string[] ReadFile()
         {
-            Console.Write("Enter filename to save: ");
-            var fileName = Console.ReadLine();
+            Console.Write("Enter filename: ");
+            var filename = Console.ReadLine();
+            return System.IO.File.ReadAllLines(filename);
+        }
 
-            try
-            {
-                FileSystem.SaveToFile(fileName, journal);
-                Console.WriteLine("Journal saved successfully!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error saving journal: {ex.Message}");
-            }
+        static void WriteFile(string[] lines)
+        {
+            Console.Write("Enter filename: ");
+            var filename = Console.ReadLine();
+            System.IO.File.WriteAllLines(filename, lines);
         }
         
-        // load the journal to a file
-        static void LoadFromFile()
-        {
-            Console.Write("Enter filename to load: ");
-            var fileName = Console.ReadLine();
-
-            try
-            {
-                Journal loadedJournal = FileSystem.LoadFromFile(fileName);
-                journal = loadedJournal;
-                Console.WriteLine("Journal loaded successfully!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading journal: {ex.Message}");
-            }
-        }
         
         // menu
         static void ShowMenu()
@@ -131,4 +113,5 @@ namespace Learning02
             return prompts[index];
         }
     }
-    }
+}
+
