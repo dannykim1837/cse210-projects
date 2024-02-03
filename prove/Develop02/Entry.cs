@@ -4,7 +4,6 @@ public class Entry
         public string Response { get; set; }
         public DateTime Date { get; set; }
 
-        // Constructor that takes a string
         public Entry(string line)
         {
             var parts = line.Split(",");
@@ -13,7 +12,7 @@ public class Entry
             Response = parts[1];
         }
 
-        public Entry() { }  // Default constructor
+        public Entry() { }  
 
         public string Export()
         {
