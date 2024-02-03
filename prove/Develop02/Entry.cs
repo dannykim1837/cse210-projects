@@ -1,8 +1,8 @@
 public class Entry
     {
-        public string Prompt { get; set; }
-        public string Response { get; set; }
-        public DateTime Date { get; set; }
+        public string Prompt;
+        public string Response;
+        public DateTime Date;
 
         public Entry(string line)
         {
@@ -13,9 +13,4 @@ public class Entry
         }
 
         public Entry() { }  
-
-        public string Export()
-        {
-            return $"{Prompt},{Response},{Date}";
-        }
     }

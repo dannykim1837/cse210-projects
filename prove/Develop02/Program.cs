@@ -7,7 +7,7 @@ namespace Learning02
     {
         static Journal journal = new Journal();
 
-        // menu loop
+        // main
         static void Main(string[] args)
         {
             bool keepGoing = true;
@@ -71,10 +71,11 @@ namespace Learning02
 
             foreach (var entry in journal.Entries)
             {
-                Console.WriteLine($"Date: {entry.Date}, Prompt: {entry.Prompt}, Response: {entry.Response}");
+                Console.WriteLine($"Prompt: {entry.Prompt}, \nResponse: {entry.Response}, \nDate: {entry.Date}");
             }
         }
-        
+
+        // save file
         static string[] ReadFile()
         {
             Console.Write("Enter filename: ");
@@ -82,6 +83,7 @@ namespace Learning02
             return System.IO.File.ReadAllLines(filename);
         }
 
+        // load file
         static void WriteFile(string[] lines)
         {
             Console.Write("Enter filename: ");
