@@ -6,11 +6,11 @@ namespace Learning02
     class Program
     {   
         static Journal journal = new Journal();
+        
         // main
         static void Main(string[] args)
         {
             bool keepGoing = true;
-            
 
             while (keepGoing)
             {
@@ -40,7 +40,6 @@ namespace Learning02
                     keepGoing = false;
                     Console.WriteLine("Goodbye!");
                 }
-                
             }    
         }
         
