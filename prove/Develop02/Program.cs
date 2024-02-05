@@ -4,45 +4,43 @@ using System.Collections.Generic;
 namespace Learning02
 {
     class Program
-    {
+    {   
         static Journal journal = new Journal();
-
         // main
         static void Main(string[] args)
         {
             bool keepGoing = true;
-            // 
-            Console.Clear();
+            
+
             while (keepGoing)
             {
-                ShowMenu();
-                int selection;
-                if (int.TryParse(Console.ReadLine(), out selection))
+                Console.Clear();
+                int selection = ShowMenu();
+
+                if (selection == 1)
                 {
-                    if (selection == 1)
-                    {
-                        WriteEntry();
-                    }
-                    else if (selection == 2)
-                    {
-                        DisplayJournal();
-                    }
-                    else if (selection == 3)
-                    {
-                        var lines = journal.Export();
-                        WriteFile(lines);
-                    }
-                    else if (selection == 4)
-                    {
-                        var lines = ReadFile();
-                        journal = new Journal(lines);
-                    }
-                    else if (selection == 5)
-                    {
-                        keepGoing = false;
-                        Console.WriteLine("Goodbye!");
-                    }
+                    WriteEntry();
                 }
+                else if (selection == 2)
+                {
+                    DisplayJournal();
+                }
+                else if (selection == 3)
+                {
+                    var lines = journal.Export();
+                    WriteFile(lines);
+                }
+                else if (selection == 4)
+                {
+                    var lines = ReadFile();
+                    journal = new Journal(lines);
+                }
+                else if (selection == 5)
+                {
+                    keepGoing = false;
+                    Console.WriteLine("Goodbye!");
+                }
+                
             }    
         }
         
@@ -59,7 +57,6 @@ namespace Learning02
                 Response = response,
                 Date = DateTime.Now
             };
-
             journal.AddEntry(entry);
             Console.WriteLine("Entry added successfully!");
         }
@@ -93,9 +90,12 @@ namespace Learning02
         
         
         // menu
-        static void ShowMenu()
+        static int ShowMenu()
         {
             Console.WriteLine("Select Option \n 1. Write \n 2. Display \n 3. Save \n 4. Load  \n 5. Quit");
+            Console.Write("\nEnter your choice: ");
+            var selection = int.Parse(Console.ReadLine());
+            return selection;
         }
 
         // random prompt list
