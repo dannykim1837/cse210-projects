@@ -46,10 +46,15 @@ namespace Learning02
         // entry
         static void WriteEntry()
         {
-            Entry entry = new Entry();
-            Console.WriteLine("Random Prompt: " + entry.GetRandomPrompt());
+            Console.WriteLine("Random Prompt: " + GetRandomPrompt());
             Console.Write("Your Response: ");
             var response = Console.ReadLine();
+            var entry = new Entry
+            {
+                Prompt = GetRandomPrompt(),
+                Response = response,
+                Date = DateTime.Now
+            };
             journal.AddEntry(entry);
             Console.WriteLine("Entry added successfully!");
         }
@@ -89,6 +94,23 @@ namespace Learning02
             Console.Write("\nEnter your choice: ");
             var selection = int.Parse(Console.ReadLine());
             return selection;
+        }
+
+        // random prompt list
+        static string GetRandomPrompt()
+        {
+            List<string> prompts = new List<string>
+            {
+                "Who was the most interesting person I interacted with today?",
+                "What was the best part of my day?",
+                "How did I see the hand of the Lord in my life today?",
+                "What was the strongest emotion I felt today?",
+                "If I had one thing I could do over today, what would it be?"
+            };
+
+            Random random = new Random();
+            int index = random.Next(prompts.Count);
+            return prompts[index];
         }
     }
 }
