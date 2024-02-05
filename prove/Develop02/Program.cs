@@ -14,11 +14,11 @@ namespace Learning02
 
             while (keepGoing)
             {
-                Console.Clear();
                 int selection = ShowMenu();
 
                 if (selection == 1)
                 {
+                    Console.Clear();
                     WriteEntry();
                 }
                 else if (selection == 2)
@@ -46,16 +46,10 @@ namespace Learning02
         // entry
         static void WriteEntry()
         {
-            Console.WriteLine("Random Prompt: " + GetRandomPrompt());
+            Entry entry = new Entry();
+            Console.WriteLine("Random Prompt: " + entry.GetRandomPrompt());
             Console.Write("Your Response: ");
             var response = Console.ReadLine();
-
-            var entry = new Entry
-            {
-                Prompt = GetRandomPrompt(),
-                Response = response,
-                Date = DateTime.Now
-            };
             journal.AddEntry(entry);
             Console.WriteLine("Entry added successfully!");
         }
@@ -98,21 +92,7 @@ namespace Learning02
         }
 
         // random prompt list
-        static string GetRandomPrompt()
-        {
-            List<string> prompts = new List<string>
-            {
-                "Who was the most interesting person I interacted with today?",
-                "What was the best part of my day?",
-                "How did I see the hand of the Lord in my life today?",
-                "What was the strongest emotion I felt today?",
-                "If I had one thing I could do over today, what would it be?"
-            };
-
-            Random random = new Random();
-            int index = random.Next(prompts.Count);
-            return prompts[index];
-        }
+        
     }
 }
 
