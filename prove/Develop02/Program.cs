@@ -90,9 +90,6 @@ namespace Learning02
             var selection = int.Parse(Console.ReadLine());
             return selection;
         }
-
-        // random prompt list
-        
     }
 }
 

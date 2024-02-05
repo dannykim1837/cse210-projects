@@ -3,7 +3,8 @@ public class Entry
         public string Prompt;
         public string Response;
         public DateTime Date;
-
+        
+        // random prompt list
         public string GetRandomPrompt()
         {
             List<string> prompts = new List<string>
