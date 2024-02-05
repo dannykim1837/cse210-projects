@@ -21,7 +21,7 @@ public class Journal
             Entries.Add(entry);
         }
 
-
+        
         // for save
         public string[] Export()
         {
