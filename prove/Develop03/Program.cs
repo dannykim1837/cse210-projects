@@ -1,26 +1,40 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
         Reference reference = new Reference();
-        Scripture scripture = new Scripture(reference);;
+        Scripture scripture = new Scripture(reference);
         string selection = "";
 
-        while(selection != "quit") 
+        Console.Clear();
+        Console.WriteLine(scripture.GetVisibleScripture());
+
+        while (true)
         {
-            System.Console.WriteLine("Press Enter to continue or type 'quit' to finish");
+            Console.WriteLine("\nPress Enter to continue or type 'quit' to finish");
             selection = Console.ReadLine();
 
-            if(selection != "quit") 
+            if (selection == "quit")
+                break;
+
+            Console.Clear();
+            if (!scripture.HideRandomWord())
             {
-                Console.Clear();
-                System.Console.WriteLine(scripture.GetScripture());
-                scripture.HideRandomWord();
-                System.Console.WriteLine("Continuning");
+                scripture.MoveToNextSentence();
+                if (!scripture.HasNextSentence())
+                {
+                    Console.WriteLine("All sentences are studied. Press any key to exit.");
+                    Console.ReadKey();
+                    return;
+                }
             }
-            System.Console.WriteLine("Finish");
+            Console.WriteLine(scripture.GetVisibleScripture());
         }
+
+        Console.WriteLine("Study session ended. Press any key to exit.");
+        Console.ReadKey();
     }
 }

@@ -1,35 +1,94 @@
 public class Scripture
 {
     private Reference reference;
-    private string[] scriptures = {
-        "For a God so bloved the cworld, that he dgave his eonly begotten fSon, that whosoever gbelieveth in him should not perish, but have heverlasting ilife.",
-        "For God asent not his Son into the world to bcondemn the world; but that the world through him might be csaved.",
-        "He that believeth on him is not condemned: but he that abelieveth not is condemned already, because he hath not believed in the bname of the only begotten cSon of God.",
-        "And this is the condemnation, that alight is come into the world, and men loved bdarkness rather than light, because their cdeeds were evil.",
-        "For every one that doeth aevil bhateth the light, neither cometh to the light, lest his deeds should be reproved.",
-        "But he that adoeth btruth cometh to the clight, that his deeds may be made manifest, that they are wrought in God.",
-        "After these things came Jesus and his disciples into the land of Judæa; and there he tarried with them, and abaptized."
+    private List<string> scriptures = new List<string>
+    {
+        "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.",
+        "For God sent not his Son into the world to condemn the world; but that the world through him might be saved.",
+        "He that believeth on him is not condemned: but he that believeth not is condemned already, because he hath not believed in the name of the only begotten Son of God.",
+        "And this is the condemnation, that light is come into the world, and men loved darkness rather than light, because their deeds were evil.",
+        "For every one that doeth evil hateth the light, neither cometh to the light, lest his deeds should be reproved.",
+        "But he that doeth truth cometh to the light, that his deeds may be made manifest, that they are wrought in God.",
+        "After these things came Jesus and his disciples into the land of Juda; and there he tarried with them, and baptized."
     };
 
-    private string[] words;
+    private List<Word> words = new List<Word>();
+    private List<int> hiddenWordIndices = new List<int>();
+    private int currentSentenceIndex = 0;
 
-    public Scripture(Reference reference)
+    public Scripture(Reference scripture)
     {
-        this.reference = reference;
-        Random random = new Random();
-        int index = random.Next(scriptures.Length);
-        words = scriptures[index].Split(' '); 
+        reference = scripture;
+        InitializeWords();
     }
 
-    public string GetScripture()
+    private void InitializeWords()
     {
-        return reference.GetRandomReference() + "\n" + scriptures[new Random().Next(scriptures.Length)];
+        string currentSentence = GetCurrentSentence();
+        string[] parts = currentSentence.Split(" ");
+        foreach (string part in parts)
+        {
+            Word word = new Word(part);
+            words.Add(word);
+        }
     }
 
-    public void HideRandomWord()
-{
-    Random random = new Random();
-    int index = random.Next(words.Length); 
-    words[index] = "______"; 
-}
+    private string GetCurrentSentence()
+    {
+        return scriptures[currentSentenceIndex];
+    }
+
+    public string GetVisibleScripture()
+    {
+        string visibleScripture = reference.GetRandomReference() + "\n";
+        foreach (Word word in words)
+        {
+            visibleScripture += word.Text + " ";
+        }
+        return visibleScripture;
+    }
+
+    public bool HasHiddenWords()
+    {
+        return hiddenWordIndices.Count < words.Count;
+    }
+
+    public bool HideRandomWord()
+    {
+        try
+        {
+            Random rand = new Random();
+            int hrw;
+            do
+            {
+                hrw = rand.Next(words.Count);
+            } while (words[hrw].IsHidden()); // Keep selecting a random word until it's not hidden
+
+            words[hrw].HideWord();
+            hiddenWordIndices.Add(hrw);
+
+            // Check if all words in the current sentence are hidden
+            if (!HasHiddenWords())
+                return false; // All words are hidden
+            return true; // Not all words are hidden
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+            return false;
+        }
+    }
+
+    public void MoveToNextSentence()
+    {
+        currentSentenceIndex++;
+        words.Clear(); // Clear the words list for the new sentence
+        InitializeWords();
+        hiddenWordIndices.Clear(); // Reset hidden word indices
+    }
+
+    public bool HasNextSentence()
+    {
+        return currentSentenceIndex < scriptures.Count - 1;
+    }
 }
