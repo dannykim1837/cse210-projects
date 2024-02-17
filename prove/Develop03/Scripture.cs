@@ -40,7 +40,13 @@ public class Scripture
 
     public string GetVisibleScripture()
     {
-        string visibleScripture = reference.GetRandomReference() + "\n";
+        string visibleScripture = "";
+
+        if (hiddenWordIndices.Count == 0)
+        {
+            visibleScripture += reference.GetRandomReference() + "\n";
+        }
+
         foreach (Word word in words)
         {
             visibleScripture += word.Text + " ";
@@ -62,15 +68,14 @@ public class Scripture
             do
             {
                 hrw = rand.Next(words.Count);
-            } while (words[hrw].IsHidden()); // Keep selecting a random word until it's not hidden
+            } while (words[hrw].IsHidden()); 
 
             words[hrw].HideWord();
             hiddenWordIndices.Add(hrw);
 
-            // Check if all words in the current sentence are hidden
             if (!HasHiddenWords())
-                return false; // All words are hidden
-            return true; // Not all words are hidden
+                return false;
+            return true;
         }
         catch (Exception ex)
         {
@@ -82,9 +87,9 @@ public class Scripture
     public void MoveToNextSentence()
     {
         currentSentenceIndex++;
-        words.Clear(); // Clear the words list for the new sentence
+        words.Clear();
         InitializeWords();
-        hiddenWordIndices.Clear(); // Reset hidden word indices
+        hiddenWordIndices.Clear();
     }
 
     public bool HasNextSentence()
