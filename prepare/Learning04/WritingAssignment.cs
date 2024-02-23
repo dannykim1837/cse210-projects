@@ -1,4 +1,4 @@
-public class WritingAssignmen {
+public class WritingAssignment {
     private string _title;
-    
+
 }
