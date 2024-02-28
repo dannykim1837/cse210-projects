@@ -4,9 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        bool keeptrue = ture;
+        bool kg = ture;
         int selection = Menu();
-        while(keeptrue)
+        while(kg)
         {
             if(selection == 1)
                 {
@@ -22,7 +22,7 @@ class Program
                 }
             else if (selection == 4)
                 {
-                    keeptrue = false;
+                    kg = false;
                     Console.WriteLine("Goodbye!");
                 }
         }
