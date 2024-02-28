@@ -1,12 +1,23 @@
 class Activity
 {
-    public string activity;
+    public string activityName;
     public string description;
+    public int Duration;
+
+    public Activity(string name, string description)
+    {
+        activityName = name;
+        Description = description;
+    }
 
     public void start()
     {
-        System.Console.WriteLine($"Welcome to the {activity} Activity!!");
-        System.Console.WriteLine(description);
+        System.Console.WriteLine($"Welcome to the {name} - {description}");
+        System.Console.WriteLine("How long, in seconds, would you like for your session?");
+        Duration = int.Parse(Console.ReadLine());
+        System.Console.WriteLine("get ready...");
+        animation();
+
 
     }
 
