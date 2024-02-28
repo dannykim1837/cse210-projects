@@ -10,15 +10,18 @@ class Program
         {
             if(selection == 1)
                 {
-
+                    breathing.start();
+                    breathing.finish();
                 }
             else if (selection == 2)
                 {
-                    
+                    reflecting.start();
+                    reflecting.finish();
                 }
             else if (selection == 3)
                 {
-                    
+                    listing.start();
+                    listing.finish();
                 }
             else if (selection == 4)
                 {
