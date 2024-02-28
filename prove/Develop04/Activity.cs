@@ -17,13 +17,15 @@ class Activity
         Duration = int.Parse(Console.ReadLine());
         System.Console.WriteLine("get ready...");
         animation();
-
-
     }
 
     public void finish()
     {
-        System.Console.WriteLine("");
+        System.Console.WriteLine("Well done!!");
+        animation();
+        System.Console.WriteLine($"You have completed another {duration} seconds of the {name}");
+        animation();
+        Console.Clear();
     }
 
     public animation()
