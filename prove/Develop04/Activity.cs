@@ -1,34 +1,35 @@
 class Activity
 {
-    public string activityName;
-    public string description;
+    public string Name;
+    public string Description;
     public int Duration;
 
     public Activity(string name, string description)
     {
-        activityName = name;
+        Name = name;
         Description = description;
     }
 
     public void start()
     {
-        System.Console.WriteLine($"Welcome to the {name} - {description}");
+        System.Console.WriteLine($"Welcome to the {Name} - {Description}");
         System.Console.WriteLine("How long, in seconds, would you like for your session?");
         Duration = int.Parse(Console.ReadLine());
         System.Console.WriteLine("get ready...");
-        animation();
+        Animation();
+        Thread.Sleep(3000);
     }
 
     public void finish()
     {
         System.Console.WriteLine("Well done!!");
-        animation();
-        System.Console.WriteLine($"You have completed another {duration} seconds of the {name}");
-        animation();
+        Animation();
+        System.Console.WriteLine($"You have completed another {Duration} seconds of the {Name}");
+        Animation();
         Console.Clear();
     }
 
-    public animation()
+    public void Animation()
     {
         for(int i= 0; i <3; i++)
         {

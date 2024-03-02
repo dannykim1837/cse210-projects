@@ -2,11 +2,16 @@ using System;
 
 class Program
 {
+    
     static void Main(string[] args)
     {
-        bool kg = ture;
+        Breathing breathing = new Breathing();
+        Reflecting reflecting= new Reflecting();
+        Listing listing= new Listing();
+        bool keepGoing = true;
+        
         int selection = Menu();
-        while(kg)
+        while (keepGoing)
         {
             if(selection == 1)
                 {
@@ -25,7 +30,7 @@ class Program
                 }
             else if (selection == 4)
                 {
-                    kg = false;
+                    keepGoing = false;
                     Console.WriteLine("Goodbye!");
                 }
         }
