@@ -29,7 +29,7 @@ class Reflecting : Activity
         string prompt = prompts[random.Next(prompts.Length)];
         Console.Clear();
         System.Console.WriteLine("Considering the following prompt");
-        System.Console.WriteLine($"---- {prompt} ---- \n");
+        System.Console.WriteLine($"\n---- {prompt} ---- \n");
         System.Console.WriteLine("\nWhen you have something in mind, press enter to continue");
         System.Console.WriteLine("Now, ponder on each of the following question as they related to this experience.");
         System.Console.WriteLine("You may begin :");
