@@ -29,8 +29,7 @@ class Activity : Program
         Animation();
         System.Console.WriteLine($"You have completed another {Duration} seconds of the {Name}");
         Animation();
-        Console.Clear();
-        Menu();
+        
     }
 
     public void Animation()

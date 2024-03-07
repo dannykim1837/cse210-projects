@@ -43,6 +43,7 @@ class Program
                     keepGoing = false;
                     Console.WriteLine("Goodbye!");
                 }
+            selection = Menu();
         }
     }
 
