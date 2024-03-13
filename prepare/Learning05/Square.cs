@@ -1,9 +1,16 @@
 using System;
 
-class Program
+public class Square : Shape
 {
-    static void Main(string[] args)
+    private double _side;
+
+    public Square(string color, double side) : base (color)
     {
-        Console.WriteLine("Hello Learning05 World!");
+        _side = side;
+    }
+
+    public override double GetArea()
+    {
+        return _side * _side;
     }
 }

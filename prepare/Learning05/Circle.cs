@@ -1,9 +1,16 @@
 using System;
 
-class Program
+public class Circle : Shape
 {
-    static void Main(string[] args)
+    private double _radius;
+
+    public Circle(string color, double radius) : base (color)
     {
-        Console.WriteLine("Hello Learning05 World!");
+        _radius = radius;
+    }
+
+    public override double GetArea()
+    {
+        return _radius * _radius * Math.PI;
     }
 }

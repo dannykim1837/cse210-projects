@@ -1,9 +1,21 @@
-using System;
+public abstract class Shape{
+    
+    private string _color;
 
-class Program
-{
-    static void Main(string[] args)
+    public Shape(string color)
     {
-        Console.WriteLine("Hello Learning05 World!");
+        _color = color;
     }
+
+    public string GetColor()
+    {
+        return _color;
+    }
+
+    public void SetColor(string color)
+    {
+        _color = color;
+    }
+
+    public abstract double GetArea();
 }
