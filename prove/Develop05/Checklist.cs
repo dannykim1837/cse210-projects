@@ -1,29 +1,21 @@
 class Checklist : Goal
 {
-    public int TargetCount;
-    public int CompletedCount;
+    public int GoalTimes { get; set; }
+    public int Bonus { get; set; }
 
-    public Checklist(string description, int targetCount)
-        : base(description)
+    public Checklist(string goalTitle, string goalDescription, int goalPoint, int goalTimes, int bonus)
+        : base(goalTitle, goalDescription, goalPoint)
     {
-        TargetCount = targetCount;
-        CompletedCount = 0;
+        GoalTimes = goalTimes;
+        Bonus = bonus;
     }
 
     public override void RecordEvent()
     {
-        CompletedCount++;
-        if (CompletedCount >= TargetCount)
+        if (++GoalTimes >= GoalTimes)
         {
+            GoalPoint += Bonus;
             Completed = true;
         }
-        else
-        {
-        }
-    }
-
-    public override string ToString()
-    {
-        return $"{(Completed ? "[X]" : "[ ]")} {Description} (Completed {CompletedCount}/{TargetCount} times)";
     }
 }

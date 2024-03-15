@@ -19,7 +19,7 @@ class SaveLoad
         List<string> lines = new List<string>();
         foreach (var goal in goals)
         {
-            lines.Add(goal.Description + "," + goal.Completed);
+            lines.Add($"{goal.GoalTitle},{goal.GoalDescription},{goal.GoalPoint},{goal.Completed}");
         }
         WriteFile(lines.ToArray());
         Console.WriteLine("Goals saved.");
@@ -32,9 +32,11 @@ class SaveLoad
         foreach (var line in lines)
         {
             var parts = line.Split(',');
-            string description = parts[0];
-            bool completed = bool.Parse(parts[1]);
-            Goal goal = new Goal(description);
+            string goalTitle = parts[0];
+            string goalDescription = parts[1];
+            int goalPoint = int.Parse(parts[2]);
+            bool completed = bool.Parse(parts[3]);
+            Goal goal = new Goal(goalTitle, goalDescription, goalPoint);
             goal.Completed = completed;
             loadedGoals.Add(goal);
         }
