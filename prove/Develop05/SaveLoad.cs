@@ -1,25 +1,12 @@
 class SaveLoad
 {
-    static string[] ReadFile()
-    {
-        Console.Write("Enter filename: ");
-        var filename = Console.ReadLine();
-        return System.IO.File.ReadAllLines(filename);
-    }
-
-    static void WriteFile(string[] lines)
-    {
-        Console.Write("Enter filename: ");
-        var filename = Console.ReadLine();
-        System.IO.File.WriteAllLines(filename, lines);
-    }
-
     public void Save(List<Goal> goals)
     {
         List<string> lines = new List<string>();
         foreach (var goal in goals)
         {
-            lines.Add($"{goal.GoalTitle},{goal.GoalDescription},{goal.GoalPoint},{goal.Completed}");
+            string line = $"{goal.GoalTitle},{goal.GoalDescription},{goal.GoalPoint},{goal.Completed}";
+            lines.Add(line);
         }
         WriteFile(lines.ToArray());
         Console.WriteLine("Goals saved.");
@@ -43,4 +30,20 @@ class SaveLoad
         Console.WriteLine("Goals loaded.");
         return loadedGoals;
     }
+    
+    static string[] ReadFile()
+    {
+        Console.Write("Enter filename: ");
+        var filename = Console.ReadLine();
+        return System.IO.File.ReadAllLines(filename);
+    }
+
+    static void WriteFile(string[] lines)
+    {
+        Console.Write("Enter filename: ");
+        var filename = Console.ReadLine();
+        System.IO.File.WriteAllLines(filename, lines);
+    }
+
+    
 }

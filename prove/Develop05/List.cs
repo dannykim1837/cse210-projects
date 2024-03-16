@@ -45,7 +45,7 @@ class List
         Console.WriteLine("Current Goals:");
         foreach (var goal in goals)
         {
-            Console.WriteLine(goal.ToString());
+            System.Console.WriteLine(goal.ToString());
         }
     }
 
