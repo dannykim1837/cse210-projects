@@ -3,14 +3,9 @@ class Video
     public string Title;
     public string Author;
     public int Length;
+    List<Comment> comments = new List<Comment>();
     
-    List<Comment> comments = new List<Comment>
-    {
-        new Comment(),
-        new Comment(),
-        new Comment(),
-        new Comment()
-    };
+    
 
     public Video(string title, string author, int length)
     {
@@ -19,6 +14,10 @@ class Video
         Length = length;
     }
     
+    public void AddComment(Comment comment)
+    {
+        comments.Add(comment);
+    }
 
     public int GetNumberOfComments()
     {
@@ -27,6 +26,7 @@ class Video
 
     public void Displayinfo()
     {
+        Console.Clear();
         System.Console.WriteLine("");
         System.Console.WriteLine($"Title : {Title}");
         System.Console.WriteLine($"Author : {Author}");
