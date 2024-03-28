@@ -27,6 +27,7 @@ class Video
 
     public void Displayinfo()
     {
+        System.Console.WriteLine("");
         System.Console.WriteLine($"Title : {Title}");
         System.Console.WriteLine($"Author : {Author}");
         System.Console.WriteLine($"Duration : {Length} seconds");
@@ -35,7 +36,7 @@ class Video
         System.Console.WriteLine("Comments:");
         foreach (var comment in comments)
             {
-                Console.WriteLine($"- {comment.Name}: \n{comment.Text}");
+                Console.WriteLine($"- {comment.Name}: {comment.Text}");
             }
     }
     

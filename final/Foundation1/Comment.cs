@@ -23,12 +23,8 @@ class Comment
     {
         Random random = new Random();
         int randomIndex = random.Next(names.Count);
-        name = names[randomIndex];
-        comment= comments[random.Next(comments.Count)];
+        Name = names[randomIndex];
+        Text = comments[random.Next(comments.Count)];
     }
 
-    public static void AddCommentToVideo(Video video, string Name, string text)
-    {
-        video.AddComment(new Comment(name, text));
-    }
 }
