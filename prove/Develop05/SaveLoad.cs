@@ -2,14 +2,17 @@ class SaveLoad
 {
     public void Save(List<Goal> goals)
     {
-        List<string> lines = new List<string>();
-        foreach (var goal in goals)
+        Console.WriteLine("Enter the filename to save the goals:");
+        string filename = Console.ReadLine();
+        using (StreamWriter writer = new StreamWriter(filename))
         {
-            string line = $"{goal.GoalTitle},{goal.GoalDescription},{goal.GoalPoint},{goal.Completed}";
-            lines.Add(line);
+            foreach (var goal in goals)
+            {
+                writer.WriteLine($"{goal.GoalTitle},{goal.GoalDescription},{goal.GoalPoint},{goal.Completed}");
+            }
         }
-        WriteFile(lines.ToArray());
-        Console.WriteLine("Goals saved.");
+        
+
     }
 
     public List<Goal> Load()

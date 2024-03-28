@@ -24,8 +24,9 @@ class Program
                 list.ListGoals();
             }
             else if (selection == 3)
-            {
+            {   
                 saveLoad.Save(goals);
+                Console.WriteLine("Goals saved.");
             }
             else if (selection == 4)
             {
