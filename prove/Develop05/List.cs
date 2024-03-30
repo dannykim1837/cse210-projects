@@ -67,4 +67,25 @@ class List
             Console.WriteLine("Invalid selection.");
         }
     }
+    public void Save(List<Goal> goalsToSave)
+    {
+        List<string> lines = new List<string>();
+
+        foreach (var goal in goalsToSave)
+        {
+            string completed = goal.Completed ? "true" : "false";
+            string goalEntry = $"{goal.GoalTitle},{goal.GoalDescription},{goal.GoalPoint},{completed}";
+            lines.Add(goalEntry);
+        }
+
+        WriteFile(lines.ToArray());
+    }
+    
+    public void WriteFile(string[] lines)
+    {
+        Console.Write("Enter filename: ");
+        var filename = Console.ReadLine();
+        System.IO.File.WriteAllLines(filename, lines);
+        Console.WriteLine("Goals saved to file.");
+    }
 }

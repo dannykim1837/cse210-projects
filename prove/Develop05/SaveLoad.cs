@@ -1,18 +1,13 @@
+using System;
+using System.Collections.Generic;
+
 class SaveLoad
 {
-    public void Save(List<Goal> goals)
-    {
-        Console.WriteLine("Enter the filename to save the goals:");
-        string filename = Console.ReadLine();
-        using (StreamWriter writer = new StreamWriter(filename))
-        {
-            foreach (var goal in goals)
-            {
-                writer.WriteLine($"{goal.GoalTitle},{goal.GoalDescription},{goal.GoalPoint},{goal.Completed}");
-            }
-        }
-        
+    private List<Goal> goals = new List<Goal>();
 
+    public void AddEntry(Goal goal)
+    {
+        goals.Add(goal);
     }
 
     public List<Goal> Load()
@@ -30,9 +25,12 @@ class SaveLoad
             goal.Completed = completed;
             loadedGoals.Add(goal);
         }
+        goals.AddRange(loadedGoals);
         Console.WriteLine("Goals loaded.");
         return loadedGoals;
     }
+
+    
     
     static string[] ReadFile()
     {
@@ -41,12 +39,6 @@ class SaveLoad
         return System.IO.File.ReadAllLines(filename);
     }
 
-    static void WriteFile(string[] lines)
-    {
-        Console.Write("Enter filename: ");
-        var filename = Console.ReadLine();
-        System.IO.File.WriteAllLines(filename, lines);
-    }
-
     
+
 }

@@ -25,12 +25,12 @@ class Program
             }
             else if (selection == 3)
             {   
-                saveLoad.Save(goals);
-                Console.WriteLine("Goals saved.");
+                list.Save(goals);
             }
             else if (selection == 4)
             {
                 goals = saveLoad.Load();
+                list.ListGoals();
             }
             else if (selection == 5)
             {
@@ -52,6 +52,7 @@ class Program
         {
             System.Console.WriteLine("Menu Options \n 1. Create New Goals \n 2. List Goals \n 3. Save Goals \n 4. Load Goals \n 5. Record Event \n 6. Quit");
             System.Console.Write("\nSelect a choice from the menu: ");
+            
             var selection = int.Parse(Console.ReadLine());
             return selection;
         }

@@ -1,7 +1,7 @@
 public class Journal
     {
         //entry
-        public List<Entry> Entries { get; } = new List<Entry>();
+        public List<Entry> Entries {} = new List<Entry>();
 
         public Journal(string[] importLines = null)
         {
