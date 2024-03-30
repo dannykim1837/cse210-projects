@@ -1,4 +1,4 @@
-class address
+class Address
 {
     string state;
     string city;
@@ -18,8 +18,8 @@ class address
         return country == "USA";
     }
 
-    public fullAddress()
+    public string fulladdress()
     {
-        return ($"{street}, {city}, {state}, {country}")
+        return $"{street}, {city}, {state}, {country}";
     }
 }

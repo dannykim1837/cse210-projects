@@ -18,12 +18,24 @@ class Program
         List<Product> products1 = new List<Product>()
         {
             new Product("Rice", "R001", 15.98, 1),
-            new Product("Choco mont", "C001", 7.99, 1)
+            new Product("Choco mont", "C001", 7.99, 1),
             new Product("Bake", "B001", 3.99, 1)
         };
         Order order1 = new Order(products1, customer1);
 
-
-        
+        Console.Clear();
+        System.Console.WriteLine("-----------------------------------------");
+        System.Console.WriteLine("Shipping Address :");
+        System.Console.WriteLine(order0.s_label());
+        System.Console.WriteLine("Menu :");
+        System.Console.WriteLine(order0.p_label());
+        System.Console.WriteLine($"Total : {order0.total():C}");
+        System.Console.WriteLine("-----------------------------------------");
+        System.Console.WriteLine("Shipping Address :");
+        System.Console.WriteLine(order1.s_label());  
+        System.Console.WriteLine("Menu :");
+        System.Console.WriteLine(order1.p_label());
+        System.Console.WriteLine($"Total : {order1.total():C}");
+        System.Console.WriteLine("-----------------------------------------");
     }
 }
