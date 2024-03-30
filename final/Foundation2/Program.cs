@@ -13,6 +13,16 @@ class Program
         };
         Order order0 = new Order(products0, customer0);
 
+        Address address1 = new Address("2495 E Lincoln Rd", "Idaho Falls", "ID", "USA");
+        Customer customer1 = new Customer("Daehwan Kim", address1);
+        List<Product> products1 = new List<Product>()
+        {
+            new Product("Rice", "R001", 15.98, 1),
+            new Product("Choco mont", "C001", 7.99, 1)
+            new Product("Bake", "B001", 3.99, 1)
+        };
+        Order order1 = new Order(products1, customer1);
+
 
         
     }
