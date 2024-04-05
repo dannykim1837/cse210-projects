@@ -1,11 +1,12 @@
-class Reception : Event
+class OutdoorGather : Event
 {
-    public Reception(string title, string description, DateTime date, DateTime time, Address address, string email)
+    string Weather;
+
+    public OutdoorGather(string title, string description, DateTime date, DateTime time, Address address, string weather)
         : base(title, description, date, time, address)
     {
-
+        this.Weather = weather;
     }
-
     public override void Detail()
     {
         System.Console.WriteLine($"Title : {title}");
@@ -13,6 +14,6 @@ class Reception : Event
         System.Console.WriteLine($"Date : {date}");
         System.Console.WriteLine($"Time : {time}");
         System.Console.WriteLine($"Address : {address.getAddress()}");
-        System.Console.WriteLine($"Email : {email}");
+        System.Console.WriteLine($"Weahter : {weather}");
     }
 }
