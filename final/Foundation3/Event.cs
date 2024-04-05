@@ -1,23 +1,21 @@
-class Event
+public abstract class Event
 {
-    string Title;
-    string Description;
-    DateTime Date;
-    DateTime Time;
-    Address address;
-    string Name;
-    string Email;
+    public string Title;
+    public string Description;
+    public DateTime Date;
+    public string Time;
+    public Address address;
+    public string Email;
 
-    public Event(string title, string description, DateTime date, DateTime time, Address address, string name, string email)
+    public Event(string title, string description, DateTime date, string time, Address address, string email)
     {
         this.Title = title;
         this.Description = description;
         this.Date = date;
         this.Time = time;
-        this.Address = address;
-        this.Name = name;
+        this.address = address;
         this.Email = email;
     }
 
-    public void Detail();
+    public abstract void Detail();
 }

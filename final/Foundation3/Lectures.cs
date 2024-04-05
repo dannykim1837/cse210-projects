@@ -1,10 +1,10 @@
-class Lecture : Event
+public class Lecture : Event
 {
-    string Speaker;
-    int Capacity;
+    public string Speaker;
+    public int Capacity;
 
-    public Lecture(string title, string description, DateTime date, DateTime time, Address address, string name, string email, string speaker, int capacity)
-        : base(title, description, date, time, address)
+    public Lecture(string title, string description, DateTime date, string time, Address address, string speaker, int capacity)
+        : base(title, description, date, time, address, null)
     {
         this.Speaker = speaker;
         this.Capacity = capacity;
@@ -12,12 +12,12 @@ class Lecture : Event
 
     public override void Detail()
     {
-        System.Console.WriteLine($"Title : {title}");
-        System.Console.WriteLine($"Description : {description}");
-        System.Console.WriteLine($"Date : {date}");
-        System.Console.WriteLine($"Time : {time}");
+        System.Console.WriteLine($"Title : {Title}");
+        System.Console.WriteLine($"Description : {Description}");
+        System.Console.WriteLine($"Date : {Date}");
+        System.Console.WriteLine($"Time : {Time}");
         System.Console.WriteLine($"Address : {address.getAddress()}");
-        System.Console.WriteLine($"Speaker : {speaker}");
-        System.Console.WriteLine($"Capacity : {capacity}");
+        System.Console.WriteLine($"Speaker : {Speaker}");
+        System.Console.WriteLine($"Capacity : {Capacity}");
     }
 }

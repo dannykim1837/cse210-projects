@@ -1,9 +1,9 @@
-class Address
+public class Address
 {
-    string State;
-    string City;
-    string Street;
-    int ZipCode;
+    private string State;
+    private string City;
+    private string Street;
+    private int ZipCode;
 
     public Address(string street, string city, string state, int zipCode)
     {
@@ -15,7 +15,7 @@ class Address
 
     public string getAddress()
     {
-        return ($"{state}, {city}, {street}, {zipCode}")
+        return $"{Street}, {City}, {State} {ZipCode}";
     }
 
 }

@@ -1,19 +1,19 @@
-class OutdoorGather : Event
+public class OutdoorGather : Event
 {
     string Weather;
 
-    public OutdoorGather(string title, string description, DateTime date, DateTime time, Address address, string weather)
-        : base(title, description, date, time, address)
+    public OutdoorGather(string title, string description, DateTime date, string time, Address address, string weather)
+        : base(title, description, date, time, address, null)
     {
         this.Weather = weather;
     }
     public override void Detail()
     {
-        System.Console.WriteLine($"Title : {title}");
-        System.Console.WriteLine($"Description : {description}");
-        System.Console.WriteLine($"Date : {date}");
-        System.Console.WriteLine($"Time : {time}");
+        System.Console.WriteLine($"Title : {Title}");
+        System.Console.WriteLine($"Description : {Description}");
+        System.Console.WriteLine($"Date : {Date}");
+        System.Console.WriteLine($"Time : {Time}");
         System.Console.WriteLine($"Address : {address.getAddress()}");
-        System.Console.WriteLine($"Weahter : {weather}");
+        System.Console.WriteLine($"Weahter : {Weather}");
     }
 }
