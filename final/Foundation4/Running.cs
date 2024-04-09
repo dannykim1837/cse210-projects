@@ -1,6 +1,6 @@
 using System;
 
-class Program
+public class Running : Activity
 {
     static void Main(string[] args)
     {

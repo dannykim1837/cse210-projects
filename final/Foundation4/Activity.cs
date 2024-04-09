@@ -1,9 +1,13 @@
 using System;
 
-class Program
+public class Activity
 {
-    static void Main(string[] args)
+    private DateTime Date;
+    private int Minutes;
+
+    public Activity(DateTime date, int minutes)
     {
-        
+        this.Date = date;
+        this.Minutes = minutes;
     }
 }

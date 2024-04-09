@@ -1,6 +1,6 @@
 using System;
 
-class Program
+public class Cycling : Activity
 {
     static void Main(string[] args)
     {
